@@ -14,7 +14,13 @@ The three compose: **helper** finds and builds the skill worth having, **updater
 
 ## Install
 
-### Claude Code — just you
+### Claude Desktop app (just you)
+
+1. **Settings → Plugins → Add → Add marketplace**
+2. Enter `ShawhinT/aba-plugins` and hit "Sync" — toggle on **auto-update** here if you want new versions automatically
+3. In Plugin Directory click "+" button for "ABA Skills" plugin
+
+### Claude Code (just you)
 
 In any Claude Code session (CLI, desktop app, or web):
 
@@ -23,43 +29,20 @@ In any Claude Code session (CLI, desktop app, or web):
 /plugin install aba-skills@aba
 ```
 
-### Claude Desktop app
+### Org-wide (Team / Enterprise)
 
-1. **Settings → Plugins → Add → Add marketplace**
-2. Enter `ShawhinT/aba-plugins` and hit "Sync" — toggle on **auto-update** here if you want new versions automatically
-3. In Plugin Directory click "+" button for "ABA Skills" plugin
+Owners can deploy the plugin to the whole organization from **Organization settings → Plugins**:
 
-### Claude Code — your whole team
+1. **Add plugins → GitHub** and enter `ShawhinT/aba-plugins` (the Claude GitHub App needs access to the repo; alternatively **Upload a file** with the plugin ZIP)
+2. Set ABA Skills' installation preference: **Installed by default**, **Available for install**, or **Required**
+3. Optionally open the marketplace menu (upper right) and toggle **Sync automatically** to pick up new versions
 
-Add this to your project's `.claude/settings.json` and commit it — everyone on the repo gets the plugin automatically:
-
-```json
-{
-  "extraKnownMarketplaces": {
-    "aba": {
-      "source": {
-        "source": "github",
-        "repo": "ShawhinT/aba-plugins"
-      },
-      "autoUpdate": true
-    }
-  },
-  "enabledPlugins": {
-    "aba-skills@aba": true
-  }
-}
-```
-
-### Org-wide
-
-Admins can deploy the plugin to every user via [managed settings](https://code.claude.com/docs/en/settings#settings-files): add the marketplace under `extraKnownMarketplaces` (with `"autoUpdate": true`) and the plugin under `enabledPlugins`, using the same snippet as above. Plugins deployed this way install at **managed** scope — users get them automatically and can't remove them.
+Changes reach members on their next session or plugin refresh. Full details in the [Help Center article](https://support.claude.com/en/articles/13837433-manage-plugins-for-your-organization).
 
 ## Updates
 
 - **Claude Code:** with `autoUpdate` on, updates arrive automatically at session start; otherwise run `/plugin marketplace update aba`.
 - **Claude Desktop app:** if you toggled auto-update on when adding the marketplace, updates arrive automatically; otherwise click **Update** on the plugin in the Plugin Directory.
-
-Current version: **1.0.0** — release history lives in the [commit log](https://github.com/ShawhinT/aba-plugins/commits/main).
 
 ## Using the skills
 
@@ -71,8 +54,6 @@ Current version: **1.0.0** — release history lives in the [commit log](https:/
 
 ## Requirements
 
-- Claude Code (CLI or web sessions) or the Claude Desktop app
-- `cost-optimizer` needs no setup
 - `skill-helper` works best with connectors (Gmail, Calendar, Notion, …) so it can research how you actually work
 
 ---
