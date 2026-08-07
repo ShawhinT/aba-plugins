@@ -1,0 +1,15 @@
+{
+  "name": "aba-skills",
+  "displayName": "ABA Skills",
+  "version": "1.0.0",
+  "description": "Three meta-skills that help you build, improve, and cost-optimize your own Claude skills.",
+  "author": {
+    "name": "Shaw Talebi",
+    "email": "shaw@aibuilder.academy",
+    "url": "https://aibuilder.academy"
+  },
+  "homepage": "https://aibuilder.academy",
+  "repository": "https://github.com/ShawhinT/aba-plugins",
+  "license": "MIT",
+  "keywords": ["skills", "meta", "automation", "cost"]
+}

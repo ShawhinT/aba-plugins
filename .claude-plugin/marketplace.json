@@ -1,0 +1,17 @@
+{
+  "name": "aba",
+  "owner": {
+    "name": "Shaw Talebi",
+    "email": "shaw@aibuilder.academy",
+    "url": "https://aibuilder.academy"
+  },
+  "description": "Claude skills and plugins from AI Builder Academy",
+  "plugins": [
+    {
+      "name": "aba-skills",
+      "source": "./plugins/aba-skills",
+      "description": "Build, improve, and cost-optimize your own Claude skills",
+      "category": "productivity"
+    }
+  ]
+}
