@@ -14,14 +14,28 @@ The three compose: **helper** finds and builds the skill worth having, **updater
 
 ## Install
 
-### Just you
+### Claude Code — just you
+
+In any Claude Code session (CLI, desktop app, or web):
 
 ```
 /plugin marketplace add ShawhinT/aba-plugins
 /plugin install aba-skills@aba
 ```
 
-### Your whole team
+### Claude Desktop app / claude.ai chat
+
+The chat apps don't install plugins — they take individual skills as `.skill` files. Download the ones you want from [`dist/`](https://github.com/ShawhinT/aba-plugins/tree/main/dist):
+
+- [skill-helper.skill](https://github.com/ShawhinT/aba-plugins/raw/main/dist/skill-helper.skill)
+- [skill-updater.skill](https://github.com/ShawhinT/aba-plugins/raw/main/dist/skill-updater.skill)
+- [cost-optimizer.skill](https://github.com/ShawhinT/aba-plugins/raw/main/dist/cost-optimizer.skill)
+
+Then in the app: **Settings → Capabilities → Skills → Upload skill** and pick the file. Repeat per skill.
+
+Note: this path has no auto-update — when a new version ships, re-download and re-upload. Claude Code installs update themselves.
+
+### Claude Code — your whole team
 
 Add this to your project's `.claude/settings.json` and commit it — everyone on the repo gets the plugin automatically:
 
@@ -44,11 +58,11 @@ Add this to your project's `.claude/settings.json` and commit it — everyone on
 
 ### Org-wide
 
-Admins can deploy the plugin to every user from Claude.ai Admin Settings → Plugins, or via managed settings. See the [managed settings docs](https://code.claude.com/docs/en/plugins-marketplaces).
+Admins can deploy the plugin to every user from Claude.ai Admin Settings → Plugins, or via managed settings. See the [managed settings docs](https://code.claude.com/docs/en/plugins-marketplaces). For teams living purely in claude.ai chat, admins can instead upload the `.skill` files workspace-wide.
 
 ## Updates
 
-With `autoUpdate` on, updates arrive automatically at session start. Otherwise run `/plugin marketplace update aba`.
+Claude Code: with `autoUpdate` on, updates arrive automatically at session start; otherwise run `/plugin marketplace update aba`. Desktop/chat `.skill` installs: re-download and re-upload.
 
 Current version: **1.0.0** — release history lives in the [commit log](https://github.com/ShawhinT/aba-plugins/commits/main).
 
@@ -62,7 +76,7 @@ Current version: **1.0.0** — release history lives in the [commit log](https:/
 
 ## Requirements
 
-- Claude Code (CLI, desktop app, or web sessions)
+- Claude Code (CLI, desktop app, or web sessions) for the plugin install; Claude Desktop app or claude.ai for the `.skill` route
 - `cost-optimizer` needs no setup
 - `skill-helper` works best with connectors (Gmail, Calendar, Notion, …) so it can research how you actually work
 
