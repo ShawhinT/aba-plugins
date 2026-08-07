@@ -50,7 +50,7 @@ Admins can deploy the plugin to every user from Claude.ai Admin Settings → Plu
 
 With `autoUpdate` on, updates arrive automatically at session start. Otherwise run `/plugin marketplace update aba`.
 
-Current version: **1.1.0** — release history lives in the [commit log](https://github.com/ShawhinT/aba-plugins/commits/main).
+Current version: **1.0.0** — release history lives in the [commit log](https://github.com/ShawhinT/aba-plugins/commits/main).
 
 ## Using the skills
 
