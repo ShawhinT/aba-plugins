@@ -23,17 +23,21 @@ In any Claude Code session (CLI, desktop app, or web):
 /plugin install aba-skills@aba
 ```
 
-### Claude Desktop app / claude.ai chat
+### Claude Desktop app
 
-The chat apps don't install plugins — they take individual skills as `.skill` files. Download the ones you want from [`dist/`](https://github.com/ShawhinT/aba-plugins/tree/main/dist):
+1. **Settings → Plugins → Add → Add marketplace**
+2. Enter `ShawhinT/aba-plugins` (or `https://github.com/ShawhinT/aba-plugins`)
+3. **Browse** the `aba` marketplace and install **ABA Skills**
+
+### No plugin support on your surface?
+
+Each skill is also packaged as a standalone `.skill` file in [`dist/`](https://github.com/ShawhinT/aba-plugins/tree/main/dist) — download and upload via **Settings → Skills**:
 
 - [skill-helper.skill](https://github.com/ShawhinT/aba-plugins/raw/main/dist/skill-helper.skill)
 - [skill-updater.skill](https://github.com/ShawhinT/aba-plugins/raw/main/dist/skill-updater.skill)
 - [cost-optimizer.skill](https://github.com/ShawhinT/aba-plugins/raw/main/dist/cost-optimizer.skill)
 
-Then in the app: **Settings → Capabilities → Skills → Upload skill** and pick the file. Repeat per skill.
-
-Note: this path has no auto-update — when a new version ships, re-download and re-upload. Claude Code installs update themselves.
+This route has no auto-update — re-download and re-upload when a new version ships.
 
 ### Claude Code — your whole team
 
@@ -62,7 +66,7 @@ Admins can deploy the plugin to every user from Claude.ai Admin Settings → Plu
 
 ## Updates
 
-Claude Code: with `autoUpdate` on, updates arrive automatically at session start; otherwise run `/plugin marketplace update aba`. Desktop/chat `.skill` installs: re-download and re-upload.
+Plugin installs (Claude Code and Desktop): with `autoUpdate` on, updates arrive automatically at session start; otherwise run `/plugin marketplace update aba` or refresh from Settings → Plugins. Standalone `.skill` installs: re-download and re-upload.
 
 Current version: **1.0.0** — release history lives in the [commit log](https://github.com/ShawhinT/aba-plugins/commits/main).
 
@@ -76,7 +80,7 @@ Current version: **1.0.0** — release history lives in the [commit log](https:/
 
 ## Requirements
 
-- Claude Code (CLI, desktop app, or web sessions) for the plugin install; Claude Desktop app or claude.ai for the `.skill` route
+- Claude Code (CLI or web sessions) or the Claude Desktop app for the plugin install; the standalone `.skill` route works anywhere skills can be uploaded
 - `cost-optimizer` needs no setup
 - `skill-helper` works best with connectors (Gmail, Calendar, Notion, …) so it can research how you actually work
 
