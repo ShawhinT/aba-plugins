@@ -47,6 +47,10 @@ Transform specific corrections into general principles. The test: would this hel
 
 Each principle should convey the *why* so the model can reason about analogous situations. If you find yourself writing ALWAYS or NEVER in caps, reframe as an explanation instead.
 
+### 3.5 Get the greenlight
+
+Before touching any file, present the proposed updates as a short change list — each item: what changes, where, and the conversation evidence behind it. Wait for explicit approval; the user may veto items, reframe them, or add their own. Only then edit and package. Never deliver a repackaged `.skill` containing changes the user hasn't seen — an installable file is a commit, not a draft. A `save_skill` call is equally a commit — it writes to the user's saved skill immediately — so it sits behind this greenlight too.
+
 ### 4. Make targeted edits
 
 - Read the current SKILL.md before changing anything
@@ -61,6 +65,18 @@ Each principle should convey the *why* so the model can reason about analogous s
 - Check that new reference examples match the final version of the artifact
 - Ensure no duplication with existing instructions
 - If you touched the frontmatter `description`, confirm it's still ≤1024 characters — exceeding the cap makes the skill fail to load, so catch it here rather than at load time
+
+### 6. Deliver
+
+Only reached after the greenlight in 3.5. How you hand the update back depends on where the skill lives and what the change touches.
+
+- **Writable in place (e.g., Claude Code)** — edit the files directly and you're done; the user's saved skill updates live.
+- **Cowork/Chat, change touches only SKILL.md** — call `save_skill` with `overwrite: true`. This is the default path: it replaces SKILL.md, keeps every other file in the skill (references stay intact), and persists across sessions — no packaging, no install click. The call requires the full new SKILL.md body plus the description, so the Step 5 description-cap check happens naturally at call time.
+- **Cowork/Chat, change adds or edits `references/` files or assets** — `save_skill` can only write SKILL.md, not sidecar files, so use the repackaged `.skill` route: copy the *entire* skill directory to outputs, apply the edits there, zip it as `<name>.skill`, and present that file so the user can install it with one click.
+
+On the package route, a skill is its whole directory (SKILL.md *plus* every `references/` file and asset), so package all of it — an installed `.skill` missing its references is broken. Never substitute chat-pasted text, a "paste this into Settings" instruction, or SKILL.md on its own for the packaged skill; those force the user to do the assembly you were supposed to do.
+
+**Cache staleness (both routes):** the installed skill files you can read in-session are a read-only cache, and it does not refresh after a `save_skill` call. After any same-session update, the source of truth is the content you last sent, not a re-read of the cache. This bites hardest on the package route: zipping the cached SKILL.md silently drops earlier same-session fixes, and installing that bundle rolls them back — so re-apply any updates the cache is missing before zipping.
 
 ## Anti-patterns
 
