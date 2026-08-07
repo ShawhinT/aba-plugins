@@ -10,8 +10,6 @@ Three skills that help you build, improve, and cost-optimize your own Claude ski
 | `skill-updater` | Improves an existing skill from real usage — turns your corrections and edits into principles the skill keeps | *"Update the skill based on what we just did"* |
 | `cost-optimizer` | Estimates what the current conversation cost in tokens and dollars, then translates it into a break-even hourly wage | *"What did this conversation cost — was it worth it?"* |
 
-The three compose: **helper** finds and builds the skill worth having, **updater** keeps it sharp as you use it, and **optimizer** tells you what your sessions cost so you know where the leverage is.
-
 ## Install
 
 ### Claude Desktop app (just you)
@@ -33,7 +31,7 @@ In any Claude Code session (CLI, desktop app, or web):
 
 Owners can deploy the plugin to the whole organization from **Organization settings → Plugins**:
 
-1. **Add plugins → GitHub** and enter `ShawhinT/aba-plugins` (the Claude GitHub App needs access to the repo; alternatively **Upload a file** with the plugin ZIP)
+1. **Add plugins → GitHub** and enter `ShawhinT/aba-plugins`
 2. Set ABA Skills' installation preference: **Installed by default**, **Available for install**, or **Required**
 3. Optionally open the marketplace menu (upper right) and toggle **Sync automatically** to pick up new versions
 
