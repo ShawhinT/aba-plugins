@@ -8,7 +8,7 @@ Three skills that help you build, improve, and cost-optimize your own Claude ski
 |---|---|---|
 | `skill-helper` | Helps you answer "what skill(s) should I build?". Researches how you work, suggests 3–5 high-leverage candidates, and builds the one you pick | *"Help me figure out what skill to build"* |
 | `skill-updater` | Improves an existing skill. Turns your feedback and edits into principles the skill keeps. | *"Update the skill based on what we just did"* |
-| `cost-optimizer` | Estimates what the current conversation cost in tokens and dollars, then translates it into a break-even hourly wage. | *"What did this conversation cost — was it worth it?"* |
+| `cost-optimizer` | Estimates what the current conversation cost in tokens and dollars, then translates it into a break-even hourly wage. | *"What did this conversation cost?"* |
 
 ## Install
 
