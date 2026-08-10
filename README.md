@@ -6,9 +6,9 @@ Three skills that help you build, improve, and cost-optimize your own Claude ski
 
 | Skill | What it does | Try saying |
 |---|---|---|
-| `skill-helper` | Walks you from "I should probably automate something" to a working skill — researches how you work, suggests 3–5 high-leverage candidates, and builds the one you pick | *"Help me figure out what skill to build"* |
-| `skill-updater` | Improves an existing skill from real usage — turns your corrections and edits into principles the skill keeps | *"Update the skill based on what we just did"* |
-| `cost-optimizer` | Estimates what the current conversation cost in tokens and dollars, then translates it into a break-even hourly wage | *"What did this conversation cost — was it worth it?"* |
+| `skill-helper` | Helps you answer "what skill(s) should I build?". Researches how you work, suggests 3–5 high-leverage candidates, and builds the one you pick | *"Help me figure out what skill to build"* |
+| `skill-updater` | Improves an existing skill. Turns your feedback and edits into principles the skill keeps. | *"Update the skill based on what we just did"* |
+| `cost-optimizer` | Estimates what the current conversation cost in tokens and dollars, then translates it into a break-even hourly wage. | *"What did this conversation cost — was it worth it?"* |
 
 ## Install
 
@@ -41,14 +41,6 @@ Changes reach members on their next session or plugin refresh. Full details in t
 
 - **Claude Code:** with `autoUpdate` on, updates arrive automatically at session start; otherwise run `/plugin marketplace update aba`.
 - **Claude Desktop app:** if you toggled auto-update on when adding the marketplace, updates arrive automatically; otherwise click **Update** on the plugin in the Plugin Directory.
-
-## Using the skills
-
-**skill-helper** — say *"help me build my first skill."* It quietly researches how you work (sessions, connectors, calendar if connected), plays back what it sees, interviews you to fill the gaps, then suggests 3–5 candidate skills scored by hours saved vs. build complexity — and builds the one you pick.
-
-**skill-updater** — at the end of a session where a skill misfired or you corrected its output, say *"update the skill with what we learned."* It extracts the general principle from your corrections and makes surgical edits to the skill — no bloat, no one-off rules.
-
-**cost-optimizer** — at the end of a chat, say *"run the cost estimate."* It sizes the conversation's token usage, prices it, and reports a break-even wage — "as long as your time is worth more than $Y/hour, this paid off" — plus one concrete optimization if the setup was overkill.
 
 ## Requirements
 
