@@ -47,9 +47,13 @@ Transform specific corrections into general principles. The test: would this hel
 
 Each principle should convey the *why* so the model can reason about analogous situations. If you find yourself writing ALWAYS or NEVER in caps, reframe as an explanation instead.
 
+Write for someone who wasn't in the conversation: they need the rule and why it holds, not the failure that prompted it. A draft that runs long is usually carrying that diagnosis, and cutting it makes the text shorter and more general at once.
+
 ### 3.5 Get the greenlight
 
 Before touching any file, present the proposed updates as a short change list — each item: what changes, where, and the conversation evidence behind it. Wait for explicit approval; the user may veto items, reframe them, or add their own. Only then edit and package. Never deliver a repackaged `.skill` containing changes the user hasn't seen — an installable file is a commit, not a draft. A `save_skill` call is equally a commit — it writes to the user's saved skill immediately — so it sits behind this greenlight too.
+
+The change list and the skill text are different artifacts. Evidence — what broke, which file, which phase — belongs in the change list so the user can judge the change, not in the skill text. Keeping them separate is what stops proposals from arriving pre-bloated.
 
 ### 4. Make targeted edits
 
