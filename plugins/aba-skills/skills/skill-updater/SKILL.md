@@ -37,7 +37,7 @@ Not everything belongs in the skill. Route each insight to the right place:
 | Belongs in... | Examples |
 |---|---|
 | **SKILL.md** | Formatting conventions, structural patterns, workflow steps, new capabilities |
-| **Reference file (`references/`)** | A completed artifact showing a pattern the skill doesn't have an example of — still part of the skill, just shipped alongside SKILL.md instead of described in its prose |
+| **Supplemental file** | Any file shipped inside the skill alongside SKILL.md — a reference example (`references/`), a script, an asset, a template. Use one when the learning is better carried by a file than described in prose |
 | **Memory** | User preferences about Claude's behavior, project context, who/what/when |
 | **Nowhere** | One-off decisions, things already derivable from code/examples |
 
