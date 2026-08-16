@@ -24,6 +24,12 @@ Read the conversation and identify:
 - **New patterns** — structural or formatting patterns that the skill doesn't currently cover
 - **Wasted effort** — things the skill made you do that weren't useful
 
+### 1.5 Find the root cause before categorizing
+
+Step 1 produces a list; most conversations produce one root cause. Trace the chain — the observations usually connect (a permissive instruction → a bad artifact → a shipped mistake → a user correction) — and propose the fix at the deepest point the evidence supports. A fix for a symptom the root fix would have prevented doesn't belong in the proposal: it guards against nothing once the root is fixed, and it's how skills bloat one defensible item at a time.
+
+Weight the user's actual complaint over self-observed friction. What the user corrected is signal; what merely slowed you down is usually nowhere, unless it's certain to recur and the user's complaint doesn't touch it. Four individually well-framed principles are worse than the one right one — minimalism is a property of the proposal, not just of each item.
+
 ### 2. Categorize each learning
 
 Not everything belongs in the skill. Route each insight to the right place:
