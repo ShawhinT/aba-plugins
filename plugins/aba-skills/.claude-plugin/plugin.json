@@ -1,7 +1,7 @@
 {
   "name": "aba-skills",
   "displayName": "ABA Skills",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Three meta-skills that help you build, improve, and cost-optimize your own Claude skills.",
   "author": {
     "name": "Shaw Talebi",
