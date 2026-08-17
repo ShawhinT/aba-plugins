@@ -156,7 +156,15 @@ Roles (each tuned to how that content actually tokenizes — validated on real c
 
 Set `"model"` to the model that ran this session (from the system prompt / env).
 
-### Step 2 — Run the script
+### Step 2 — Fetch live pricing, then run the script
+
+No prices are stored in this skill or its script — pricing has one source of truth,
+Anthropic's docs. Fetch the current rates for the session's model (USD per million
+tokens, input and output) from
+https://platform.claude.com/docs/en/about-claude/pricing — a cheap web fetch — and pass
+them explicitly via `--in-price`/`--out-price`. If web access isn't available on this
+surface, use your best knowledge of current rates and say plainly that the figures are
+from memory, not the live page.
 
 Run the bundled `scripts/estimate.py` from this skill's own directory. Resolve the path at
 runtime — locate the directory this SKILL.md loaded from and run the script relative to it
@@ -164,8 +172,10 @@ runtime — locate the directory this SKILL.md loaded from and run the script re
 
 ```bash
 python3 <this-skill's-directory>/scripts/estimate.py \
-    /tmp/cost_transcript.json --model opus
+    /tmp/cost_transcript.json --model opus --in-price 5 --out-price 25
 ```
+
+(`--model` is a display label; the fetched prices are what drive the math.)
 
 It prints input/output tokens (with a fresh-vs-cached split), total tokens, and both
 a **list-price** and a **cache-adjusted** cost. The cache-adjusted number is the one
@@ -241,7 +251,7 @@ session per task, `/model` to switch tiers immediately, and trimming subagent
 configuration all join the palette below. The desktop palette:
 
 - **Lower model tier** — pick a cheaper model in the model selector next chat; re-run the
-  script with `--model` to quote the saving.
+  script with the cheaper tier's fetched rates to quote the saving.
 - **Lower effort / thinking off** — both live in the app's model settings. Thinking tokens
   bill as output and can run tens of thousands per request, so this lever is bigger than it
   looks. Not available on Fable, which always uses extended thinking — there the lever is a
@@ -281,7 +291,7 @@ A good shape:
 >
 > - **Estimated cost:** ~$4
 > - **Estimated break-even wage:** ~$2/hour
-> - **Recommendation:** Optimize — mostly retrieval and formatting, no hard reasoning; run it on Sonnet next time (~$1.10 cache-adj, re-run with `--model sonnet`).
+> - **Recommendation:** Optimize — mostly retrieval and formatting, no hard reasoning; run it on Sonnet next time (~$1.10 cache-adj at Sonnet's rates).
 
 ## The break-even wage — this is the payload
 
@@ -319,8 +329,8 @@ should be driven by fast vs. very-fast — not fast vs. thorough.
 work was mostly retrieval/formatting (Haiku or Sonnet territory) versus genuine hard
 reasoning (Opus/Fable earned it), but frame it as a default for a *future* chat or a
 scheduled task's next run — never as a fix for the conversation that just happened.
-Re-running the script with `--model haiku` gives the concrete "what a cheaper tier would
-cost next time" comparison. Be honest both ways: if Opus was the right call, say so.
+Re-running the script with the cheaper tier's rates gives the concrete "what a cheaper
+tier would cost next time" comparison. Be honest both ways: if Opus was the right call, say so.
 This judgment is what feeds the **Recommendation** bullet (Keep vs. Optimize) in the readout.
 
 ## Calibration (how the estimate gets trustworthy)
@@ -344,11 +354,10 @@ Read it when the user wants to tune the constants against actual API/Console dat
 
 ## Notes
 
-- Pricing lives in `PRICES` in `estimate.py` (per million tokens, input/output),
-  current as of 2026-07-13. Before trusting the dollar figures, sanity-check against
-  the live rates at https://platform.claude.com/docs/en/about-claude/pricing and
-  update `PRICES` (and its as-of date) if they've drifted. Sonnet is at its intro
-  rate through 2026-08-31; it rises to $3/$15 after.
+- No prices are stored anywhere in this skill. The pricing source of truth is
+  https://platform.claude.com/docs/en/about-claude/pricing — fetch it fresh each run
+  (Step 2) and pass the rates via `--in-price`/`--out-price`. This also picks up
+  time-limited rates (intro pricing, changes) automatically, with nothing to keep in sync.
 - This estimates **one conversation**. It does not sum across a day or reconcile a
   bill — for that, the Console usage export is authoritative.
 - Further reading (all as of 2026-07-13): [cost management](https://code.claude.com/docs/en/costs)

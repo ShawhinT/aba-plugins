@@ -1,6 +1,6 @@
 ---
 name: skill-updater
-description: Update and improve existing skills based on conversation feedback. Use when the user asks to update a skill, improve a skill, or reflect on what was learned in a conversation to improve a skill. Also use when the user says things like "update the skill", "the skill should know about this", or "add this to the skill."
+description: Update and improve existing skills based on conversation feedback, and audit existing skills to prune content that no longer earns its place. Use when the user asks to update a skill, improve a skill, or reflect on what was learned in a conversation to improve a skill. Also use when the user says things like "update the skill", "the skill should know about this", or "add this to the skill." Also fires for pruning — "audit this skill", "prune the skill", "slim this down", "what can we remove from this skill", or sweeping skills for outdated scaffolding after a new model release.
 metadata:
   author: Shaw Talebi (aibuilder.academy)
   source: https://github.com/ShawhinT/aba-plugins
@@ -13,6 +13,13 @@ Improve existing skills by extracting principles from real usage — corrections
 ## Philosophy
 
 Skills should be **minimal and principle-based**. A good skill explains *how* and *why*, not a checklist of dos and don'ts. The model using the skill is smart — give it understanding and it will handle edge cases it's never seen. Give it rigid rules and it will follow them blindly or break in novel situations.
+
+## Two modes
+
+- **Feedback mode** (the default — the workflow below): improve a skill from what a conversation surfaced.
+- **Audit mode**: prune a skill of content that has stopped earning its place — scaffolding written for weaker models, stale platform facts, redundancy. Run it when the user asks to audit, prune, or slim down a skill, or after a new model release. The decay taxonomy and procedure live in `references/pruning.md`; audit mode replaces steps 1–3 below and rejoins the workflow at step 3.5.
+
+During a feedback-mode update, scaffolding you notice near the edit can be flagged as optional prune items in the change list — never silently removed as scope creep.
 
 ## Workflow
 
@@ -37,7 +44,8 @@ Not everything belongs in the skill. Route each insight to the right place:
 | Belongs in... | Examples |
 |---|---|
 | **SKILL.md** | Formatting conventions, structural patterns, workflow steps, new capabilities |
-| **Supplemental file** | Any file shipped inside the skill alongside SKILL.md — a reference example (`references/`), a script, an asset, a template. Use one when the learning is better carried by a file than described in prose |
+| **Supplemental file** | Any file shipped inside the skill alongside SKILL.md — a reference example (`references/`), a script, an asset, a template. Use one when the learning is better carried by a file than described in prose, and only Claude needs it |
+| **External record** | A source of truth outside the skill — a Notion page, doc, or live URL — that the skill points to and pulls at run time. Use when the content is needed by more than just Claude (humans read or edit it, other agents consume it), when it evolves on its own editorial cadence, or when an external authority already exists (e.g., a provider's pricing page). The dividing line from a supplemental file is the audience: Claude-only stays bundled; shared moves out |
 | **Memory** | User preferences about Claude's behavior, project context, who/what/when |
 | **Nowhere** | One-off decisions, things already derivable from code/examples |
 
