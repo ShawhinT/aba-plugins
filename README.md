@@ -48,4 +48,4 @@ Changes reach members on their next session or plugin refresh. Full details in t
 
 ---
 
-Built by Shaw Talebi · [aibuilder.academy](https://aibuilder.academy) · questions → shaw@aibuilder.academy
+Built by Shaw Talebi · [aibuilder.academy](https://aibuilder.academy)
