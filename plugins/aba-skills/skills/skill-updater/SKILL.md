@@ -65,7 +65,7 @@ Write for someone who wasn't in the conversation: they need the rule and why it 
 
 ### 3.5 Get the greenlight
 
-Before touching any file, present the proposed updates as a short change list — each item: what changes, where, and the conversation evidence behind it. Wait for explicit approval; the user may veto items, reframe them, or add their own. Only then edit and package. Never deliver a repackaged `.skill` containing changes the user hasn't seen — an installable file is a commit, not a draft. A `save_skill` call is equally a commit — it writes to the user's saved skill immediately — so it sits behind this greenlight too.
+Before touching any file, present the proposed updates as a short change list — each item: what changes, where, and the conversation evidence behind it. Wait for explicit approval; the user may veto items, reframe them, or add their own. Only then edit and package. Never deliver a repackaged `.skill` containing changes the user hasn't seen — an installable file is a commit, not a draft. Any call that hands back a savable new version is equally a commit — a review card is one click from landing — so it sits behind this greenlight too.
 
 The change list and the skill text are different artifacts. Evidence — what broke, which file, which phase — belongs in the change list so the user can judge the change, not in the skill text. Keeping them separate is what stops proposals from arriving pre-bloated.
 
@@ -91,7 +91,7 @@ Only reached after the greenlight in 3.5. The route depends on what the session 
 - **Writable in place (e.g., Claude Code)** — edit the files directly and you're done; the user's saved skill updates live.
 - **A skill that ships inside a plugin** — none of the routes below. A save writes a *personal* skill that shadows the plugin's copy instead of updating it, so the change silently fails to reach anyone who installed the plugin. Route to the plugin's own update path.
 - **`propose_skills` available** — the current Cowork default. Installed skill files are a read-only cache and there is no write tool, so this call renders a review card and writes nothing; the update isn't landed until the user saves from it. Pass the complete SKILL.md, frontmatter included — the card replaces the whole file.
-- **`save_skill` available** — call it with `overwrite: true`: it replaces SKILL.md, keeps every other file in the skill, and persists across sessions. It cannot write sidecar files, so a change touching `references/` or assets takes the packaged route instead: copy the *entire* skill directory to outputs, apply the edits there, zip it as `<name>.skill`, and present that file.
+- **A change the available call can't carry** — a card or write that replaces SKILL.md can't touch `references/` files or assets, so those take the packaged route: copy the *entire* skill directory to outputs, apply the edits there, zip it as `<name>.skill`, and present that file for one-click install.
 
 **The card's `description` becomes the skill's routing description.** `propose_skills` takes a `description` parameter that reads like a display field — a one-liner for the card — but it lands on the saved skill and overwrites the frontmatter description. Summarize the diff there and the skill stops triggering, because nothing in "adds X and Y" matches how anyone asks for it. Pass the routing description verbatim in *both* the parameter and the frontmatter; the change summary belongs in the chat message.
 
