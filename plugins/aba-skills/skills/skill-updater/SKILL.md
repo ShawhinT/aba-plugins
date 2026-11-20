@@ -1,6 +1,6 @@
 ---
 name: skill-updater
-description: Improve, audit, or simplify an existing skill from feedback and observed results. Owns every change to a saved skill; skill-creator authors new ones. Use when the user asks to update, fix, prune, slim down, or add a learning to a skill, however casually phrased ("let's update the skill", "the skill should know about this", "add this to the skill"), or to review skills after a model or platform change.
+description: Improve, audit, or simplify an existing skill from feedback and observed results, including what the current conversation surfaced. Owns every change to a saved skill, so it takes precedence over skill-creator, which authors new ones. Use when the user asks to update, fix, prune, slim down, or add a learning to a skill, however casually phrased ("update the skill based on this conversation", "let's update the skill", "the skill should know about this", "add this to the skill"), or to review skills after a model or platform change. Load it before any tool call that saves, proposes, or edits a skill, even for a one-line change.
 metadata:
   author: Shaw Talebi (aibuilder.academy)
   source: https://github.com/ShawhinT/aba-plugins
